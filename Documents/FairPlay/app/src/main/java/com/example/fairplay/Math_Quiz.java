@@ -122,6 +122,7 @@ public class Math_Quiz extends AppCompatActivity {
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+                            finish();
                             Intent intent=new Intent(Math_Quiz.this,MainActivity.class);
                             startActivity(intent);
                         }

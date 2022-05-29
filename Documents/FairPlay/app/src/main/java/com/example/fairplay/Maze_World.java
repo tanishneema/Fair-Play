@@ -172,7 +172,6 @@ public class Maze_World extends AppCompatActivity {
         ImageView block22 = (ImageView)findViewById(R.id.block22);
         ImageView block23 = (ImageView)findViewById(R.id.block23);
         ImageView block24 = (ImageView)findViewById(R.id.block24);
-        ImageView win = (ImageView)findViewById(R.id.imageView25);
         ImageView home = (ImageView)findViewById(R.id.home);
         block0.setVisibility(View.INVISIBLE);
         block1.setVisibility(View.INVISIBLE);
@@ -252,7 +251,6 @@ public class Maze_World extends AppCompatActivity {
                         block23.setVisibility(View.VISIBLE);
                     else if(i==5 && j==5){
                         block24.setVisibility(View.VISIBLE);
-                        win.setVisibility(View.VISIBLE);
                         home.setVisibility(View.INVISIBLE);
                         new AlertDialog.Builder(this)
                                 .setTitle("You did it!!!")
@@ -260,13 +258,16 @@ public class Maze_World extends AppCompatActivity {
                                 .setCancelable(false)
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        Intent refresh = new Intent(Maze_World.this, Maze_World.class);
-                                        startActivity(refresh);
+                                        Intent intent1 = new Intent(getApplicationContext(), Maze_World.class);
+                                        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent1);
+
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
+                                        finish();
                                         Intent intent=new Intent(Maze_World.this,MainActivity.class);
                                         startActivity(intent);
                                     }
